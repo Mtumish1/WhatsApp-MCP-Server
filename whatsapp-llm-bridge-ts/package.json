@@ -1,0 +1,47 @@
+{
+  "name": "whatsapp-llm-bridge",
+  "version": "1.0.0",
+  "description": "TypeScript bridge for WhatsApp interaction in a personal LLM assistant project.",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon --exec ts-node src/app.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "whatsapp",
+    "llm",
+    "bridge",
+    "typescript",
+    "automation",
+    "personal"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "sqlite3": "^5.1.7",
+    "whatsapp-web.js": "^1.23.0",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "@types/pino": "^7.0.5",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@types/sqlite3": "^3.1.11",
+    "@types/ws": "^8.5.10",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "eslint": "^8.57.0",
+    "nodemon": "^3.1.3",
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

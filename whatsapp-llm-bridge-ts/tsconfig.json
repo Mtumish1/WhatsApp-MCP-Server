@@ -1,0 +1,17 @@
+// whatsapp-llm-bridge-ts/tsconfig.json
+// This file tells the TypeScript compiler how to turn your TypeScript code (.ts) into JavaScript code (.js).
+// It's like a recipe book for the compiler.
+{
+  "compilerOptions": {
+    "target": "ES2022",                             // Specifies the JavaScript version to compile to (modern ES2022)
+    "module": "commonjs",                           // Specifies the module system for the compiled JavaScript
+    "rootDir": "./src",                             // Specifies the root directory of TypeScript source files
+    "outDir": "./dist",                             // Specifies the output directory for compiled JavaScript
+    "esModuleInterop": true,                        // Enables interoperability between CommonJS and ES Modules
+    "forceConsistentCasingInFileNames": true,       // Ensures consistent casing in file names
+    "strict": true,                                 // Enables all strict type-checking options (highly recommended)
+    "skipLibCheck": true                            // Skips type checking of declaration files (faster compilation)
+  },
+  "include": ["src/**/*.ts"],                       // Specifies which files to include in the compilation
+  "exclude": ["node_modules", "dist"]               // Specifies which files to exclude from the compilation
+}
