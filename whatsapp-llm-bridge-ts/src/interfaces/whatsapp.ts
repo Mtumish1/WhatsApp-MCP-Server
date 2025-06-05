@@ -17,6 +17,7 @@ export interface IMessage {
   hasMedia?: boolean;
   mimeType?: string;
   caption?: string;
+
 }
 
 export interface IChat {
@@ -33,4 +34,6 @@ export interface IContact {
   name: string | null; // Display name
   number: string; // Phone number
   isBusiness: boolean;
-  // Add more fields for profile picture, about status, etc.
+
+}
+  // Add more fields for profile picture, about status, etc
