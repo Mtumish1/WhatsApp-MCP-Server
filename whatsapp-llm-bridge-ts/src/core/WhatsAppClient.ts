@@ -22,6 +22,8 @@ class WhatsAppClient {
         clientId: 'whatsapp-llm-bridge', // Unique ID for your session
         dataPath: config.sessionDataPath, // Directory to store session files
       }),
+
+      
       // You might need additional options here depending on your environment,
       // e.g., puppeteer: { args: ['--no-sandbox'] } for some Linux setups.
       puppeteer: {
