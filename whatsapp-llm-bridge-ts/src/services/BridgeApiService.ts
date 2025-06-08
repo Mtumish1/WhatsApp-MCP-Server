@@ -36,11 +36,15 @@ class BridgeApiService {
   private authenticateMiddleware(req: Request, res: Response, next: NextFunction): void {
     const authHeader = req.headers['authorization'];
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Unauthorized: Missing or invalid Authorization header.' });
+      res.status(401).json({ error: 'Unauthorized: Missing or invalid Authorization header.' });
+      res.end();
+      return;
     }
     const token = authHeader.split(' ')[1];
     if (token !== config.internalApiSecret) {
-      return res.status(403).json({ error: 'Forbidden: Invalid API secret.' });
+      res.status(403).json({ error: 'Forbidden: Invalid API secret.' });
+      res.end();
+      return;
     }
     next(); // Proceed to the next middleware/route handler if authenticated
   }
@@ -48,10 +52,10 @@ class BridgeApiService {
   // Sets up API routes (endpoints) that the MCP Server/UI will call.
   private setupRoutes(): void {
     // GET /status: Check if the bridge is running and WhatsApp is connected
-    this.app.get('/status', (req, res) => {
+    this.app.get('/status', async (req, res) => {
       res.json({
         status: 'running',
-        whatsAppClientReady: whatsappClient.getClient().isReady,
+        whatsAppClientReady: await whatsappClient.getClient().getState() === 'CONNECTED',
       });
     });
 

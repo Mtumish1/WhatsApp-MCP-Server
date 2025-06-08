@@ -76,7 +76,7 @@ class DatabaseService {
         message.senderId,
         message.text,
         message.timestamp,
-        message.isGroup ? 1 : 0, // SQLite stores boolean as 0 or 1
+        message.isGroupMsg ? 1 : 0, // SQLite stores boolean as 0 or 1
         message.fromMe ? 1 : 0,
         message.type,
         message.mediaUrl || null

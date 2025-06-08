@@ -8,7 +8,7 @@ export interface IMessage {
   senderId: string; // The ID of the sender
   text: string;
   timestamp: number; // When the message was sent (in milliseconds since epoch)
-  isGroup: boolean;
+  isGroupMsg: boolean;
   fromMe: boolean; // True if the message was sent by your account
   type: string; // e.g., 'chat', 'image', 'video', 'sticker'
   // Add more fields as needed for media, mentions, etc.

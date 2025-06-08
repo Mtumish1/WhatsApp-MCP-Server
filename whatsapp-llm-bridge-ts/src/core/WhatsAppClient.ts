@@ -2,6 +2,18 @@
 // This class manages the connection to WhatsApp Web and sends/receives messages.
 // It's the core engine that interacts with WhatsApp.
 import { Client, LocalAuth, Message, Chat, Contact } from 'whatsapp-web.js';
+
+// Augment the 'whatsapp-web.js' Message type
+declare module 'whatsapp-web.js' {
+  interface Message {
+    isGroupMsg: boolean;
+    mimetype?: string;
+    caption?: string;
+  }
+  interface Client {
+    isReady: boolean;
+  }
+}
 import qrcode from 'qrcode-terminal';
 import logger from '../utils/logger';
 import databaseService from '../services/DatabaseService';
@@ -78,7 +90,7 @@ class WhatsAppClient {
         senderId: message.from, // Sender ID is message.from
         text: message.body,
         timestamp: message.timestamp * 1000, // Convert seconds to milliseconds
-        isGroup: message.isGroupMsg,
+        isGroupMsg: message.isGroupMsg,
         fromMe: message.fromMe,
         type: message.type,
         mediaUrl: message.hasMedia ? await message.downloadMedia().then(media => media.data) : undefined, // Example for base64 media
@@ -196,13 +208,13 @@ class WhatsAppClient {
       senderId: message.from,
       text: message.body,
       timestamp: message.timestamp * 1000,
-      isGroup: message.isGroupMsg,
+      isGroupMsg: message.isGroupMsg,
       fromMe: message.fromMe,
       type: message.type,
-      mediaUrl: message.hasMedia ? await message.downloadMedia().then(media => media.data) : undefined,
-      hasMedia: message.hasMedia,
-      mimeType: message.mimetype || undefined,
-      caption: message.caption || undefined,
+    mediaUrl: message.hasMedia ? await message.downloadMedia().then(media => media.data) : undefined,
+    hasMedia: message.hasMedia,
+    mimeType: message.mimetype ?? '',
+    caption: message.caption ?? '',
     };
   }
 
